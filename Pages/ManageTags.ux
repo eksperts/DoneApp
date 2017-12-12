@@ -1,0 +1,20 @@
+<DockPanel ux:Class="ManageTags">
+	<Panel Dock="Top">
+		<Text Value="Add new tag" Color="#fff" Alignment="Center" />
+		<Rectangle Width="152" Height="40" Margin="16" Color="#18f" CornerRadius="2" />
+	</Panel>
+	<ScrollView>
+		<StackPanel ItemSpacing="2" Margin="8">
+			<Each Items="{tags.list}">
+				<DockPanel Height="40" Clicked="{tagClicked}">
+					<!-- <Panel Dock="Right" Width="96" Height="40">
+						<Text Value="Delete" Color="#fff" Alignment="Center" />
+						<Rectangle Color="#f81" CornerRadius="2" Margin="8,0" />
+					</Panel> -->
+					<Text Value="{title}" Alignment="CenterLeft" Margin="8,0" />
+					<Rectangle Color="#0002" Layer="Background" CornerRadius="2" />
+				</DockPanel>
+			</Each>
+		</StackPanel>
+	</ScrollView>
+</DockPanel>

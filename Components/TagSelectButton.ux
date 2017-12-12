@@ -1,0 +1,10 @@
+<Panel ux:Class="TagSelectButton" Label="Select" Selected="false">
+	<string ux:Property="Label" />
+	<bool ux:Property="Selected" />
+	<WhileTrue Value="{ReadProperty Selected}">
+		<Change label.Value="Change" />
+		<Change bg.Color="#f81" />
+	</WhileTrue>
+	<Text ux:Name="label" Value="{ReadProperty Label}" Color="#fff" Alignment="Center" />
+	<Rectangle ux:Name="bg" Color="#18f" CornerRadius="2" />
+</Panel>

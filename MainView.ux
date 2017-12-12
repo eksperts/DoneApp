@@ -1,0 +1,27 @@
+<App Model="DoneApp">
+	<DockPanel>
+		<iOS.StatusBarConfig Style="Light" />
+		<StatusBarBackground Dock="Top" Background="#18f" />
+
+		<Panel Dock="Top" Height="56" Color="#18f">
+			<WhileTrue Value="{haveHistory}">
+				<Panel ux:Name="backButton" Width="56" Alignment="Left" HitTestMode="LocalBounds" Clicked="{onBackButton}">
+					<AddingAnimation>
+						<Change backButton.Opacity="0" Duration="0.24" />
+					</AddingAnimation>
+					<Text Value="Back" Color="#fff" Alignment="Center" />
+				</Panel>
+			</WhileTrue>
+			<Text Value="{title}" Alignment="Center" Color="#fff" Font="Bold" FontSize="18" />
+		</Panel>
+		<BottomBarBackground Dock="Bottom" />
+
+		<Navigator Pages="{pages}">
+			<ControlCenter ux:Template="ControlCenter" />
+			<ManageTags ux:Template="ManageTags" />
+		</Navigator>
+
+		<OnBackButton Handler="{onBackButton}" />
+
+	</DockPanel>
+</App>
