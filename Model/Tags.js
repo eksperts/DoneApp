@@ -8,7 +8,8 @@ class Tag {
 }
 
 export default class Tags {
-	constructor() {
+	constructor(storage = DI("storage")) {
+		this.storage = storage
 		this.list = [
 			new Tag(null, "Select None"),
 			new Tag(1, "Test One"),

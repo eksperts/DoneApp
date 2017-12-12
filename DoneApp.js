@@ -2,16 +2,19 @@ import DI from 'FuseJS/DI'
 
 import Tags from 'Model/Tags'
 import Timer from 'Model/Timer'
+import Storage from 'Model/Storage'
+
 import ControlCenter from 'Pages/ControlCenter'
 import ManageTags from 'Pages/ManageTags'
 
-export class DoneApp {
+export default class DoneApp {
 	constructor() {
 		DI(this)
 		this.title = "Done"
+		this.storage = new Storage()
 		this.tags = new Tags()
-		this.pages = [new ControlCenter()]
 		this.timer = new Timer()
+		this.pages = [new ControlCenter()]
 	}
 
 	tagButtonClicked() {

@@ -1,8 +1,9 @@
 import DI from 'FuseJS/DI'
 
 export default class Timer {
-	constructor(tags = DI("tags")) {
+	constructor(tags = DI("tags"), storage = DI("storage")) {
 		this.tags = tags
+		this.storage = storage
 		this.running = false
 	}
 
@@ -16,22 +17,21 @@ export default class Timer {
 
 	toggle() {
 		if (this.isRunning) {
-			// stop timer
 			this.stopTimer()
 		} else if (this.tags.isSelected) {
-			// start timer
 			this.startTimer()
 		} else {
 			// can not start a timer when no tag is selected
-			// console.log("nope")
 		}
 	}
 
 	stopTimer() {
+		// TODO: log the current record as finished
 		this.running = false
 	}
 
 	startTimer() {
+		// TODO: make a note a new record started
 		this.running = true
 	}
 
