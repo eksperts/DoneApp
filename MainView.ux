@@ -14,7 +14,7 @@
 			</WhileTrue>
 			<Text Value="{title}" Alignment="Center" Color="#fff" Font="Bold" FontSize="18" />
 		</Panel>
-		<BottomBarBackground Dock="Bottom" />
+		<BottomBarBackground Dock="Bottom" IncludesKeyboard="false" />
 
 		<Navigator Pages="{pages}">
 			<ControlCenter ux:Template="ControlCenter" />

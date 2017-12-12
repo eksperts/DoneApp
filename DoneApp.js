@@ -10,6 +10,11 @@ export class DoneApp {
 		this.title = "Done"
 		this.tags = new Tags()
 		this.pages = [new ControlCenter()]
+		this.timerIsRunning = false
+	}
+
+	get timerIsNotRunning() {
+		return ! this.timerIsRunning
 	}
 
 	tagButtonClicked() {
@@ -18,7 +23,7 @@ export class DoneApp {
 
 	onBackButton() {
 		if (this.pages.length > 0) {
-			this.pages.pop();
+			this.pages.pop()
 		} else {
 			// TODO: if on Android, exit app (perhaps?)
 		}
@@ -26,5 +31,11 @@ export class DoneApp {
 
 	get haveHistory() {
 		return this.pages.length > 1
+	}
+
+	timerButtonClicked() {
+		if (this.timerIsRunning) {
+			
+		}
 	}
 }

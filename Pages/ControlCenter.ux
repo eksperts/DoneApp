@@ -3,5 +3,9 @@
 		<Text ux:Name="tagLabel" Value="{tags.selectedLabel}" Dock="Left" Alignment="CenterLeft" TextWrapping="Wrap" />
 		<TagSelectButton Dock="Right" Height="40" Clicked="{tagButtonClicked}" Selected="{tags.isSelected}" />
 	</Grid>
+	<StackPanel Dock="Top" ItemSpacing="8">
+		<Text Value="00:00" Alignment="Center" FontSize="36" />
+		<StartTimerButton Height="64" Margin="16,0" ShowStartTimer="{tags.isSelected} && {timerIsRunning == false}" ShowStopTimer="{tags.isSelected} && {timerIsRunning}" Clicked="{timerButtonClicked}" />
+	</StackPanel>
 	<Panel />
 </DockPanel>

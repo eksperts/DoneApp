@@ -1,0 +1,15 @@
+<Panel ux:Class="StartTimerButton" Label="No tag, no timer" ShowStartTimer="false" ShowStopTimer="false">
+	<string ux:Property="Label" />
+	<bool ux:Property="ShowStartTimer" />
+	<bool ux:Property="ShowStopTimer" />
+	<WhileTrue Value="{ReadProperty ShowStartTimer}">
+		<Change label.Value="Start Timer" />
+		<Change bg.Color="#481" />
+	</WhileTrue>
+	<WhileTrue Value="{ReadProperty ShowStopTimer}">
+		<Change label.Value="Stop Timer" />
+		<Change bg.Color="#c51" />
+	</WhileTrue>
+	<Text ux:Name="label" Value="{ReadProperty Label}" Color="#fff" Alignment="Center" />
+	<Rectangle ux:Name="bg" Color="#888" CornerRadius="2" />
+</Panel>
