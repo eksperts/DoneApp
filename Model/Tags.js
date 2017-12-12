@@ -1,3 +1,5 @@
+import DI from 'FuseJS/DI'
+
 class Tag {
 	constructor(index, title) {
 		this.index = index
@@ -25,10 +27,17 @@ export default class Tags {
 	}
 
 	select(idx) {
-		this.selected = idx;
+		this.stopTimer()
+		this.selected = idx
 	}
 
 	clear() {
-		this.selected = null;
+		this.stopTimer()
+		this.selected = null
+	}
+
+	stopTimer() {
+		let timer = DI("timer")
+		timer.stopTimer()
 	}
 }
