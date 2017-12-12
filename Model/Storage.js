@@ -8,4 +8,15 @@ export default class Storage {
 			current: FS.dataDirectory + "/" + "doneCurrent.json"
 		}
 	}
+
+	readTags() {
+		if (!FS.existsSync(this.paths.tags)) {
+			this.writeTags([])
+		}
+		return JSON.parse(FS.readTextFromFileSync(this.paths.tags))
+	}
+
+	writeTags(arr) {
+		FS.writeTextToFileSync(this.paths.tags, JSON.stringify(arr))
+	}
 }
