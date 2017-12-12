@@ -19,6 +19,7 @@
 		<Navigator Pages="{pages}">
 			<ControlCenter ux:Template="ControlCenter" />
 			<ManageTags ux:Template="ManageTags" />
+			<AddTag ux:Template="AddTag" />
 		</Navigator>
 
 		<OnBackButton Handler="{onBackButton}" />

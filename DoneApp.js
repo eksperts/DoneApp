@@ -6,6 +6,7 @@ import Storage from 'Model/Storage'
 
 import ControlCenter from 'Pages/ControlCenter'
 import ManageTags from 'Pages/ManageTags'
+import AddTag from 'Pages/AddTag'
 
 export default class DoneApp {
 	constructor() {
@@ -19,6 +20,10 @@ export default class DoneApp {
 
 	tagButtonClicked() {
 		this.pages.push(new ManageTags())
+	}
+
+	addTagButtonClicked() {
+		this.pages.push(new AddTag())
 	}
 
 	onBackButton() {

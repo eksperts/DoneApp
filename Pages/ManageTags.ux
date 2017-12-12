@@ -1,5 +1,5 @@
 <DockPanel ux:Class="ManageTags">
-	<Panel Dock="Top">
+	<Panel Dock="Top" Clicked="{addTagButtonClicked}">
 		<Text Value="Add new tag" Color="#fff" Alignment="Center" />
 		<Rectangle Width="152" Height="40" Margin="16" Color="#18f" CornerRadius="2" />
 	</Panel>

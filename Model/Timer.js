@@ -21,7 +21,8 @@ export default class Timer {
 		} else if (this.tags.isSelected) {
 			this.startTimer()
 		} else {
-			// can not start a timer when no tag is selected
+			// can not start a timer when no tag is selected,
+			// or when a timer is already running
 		}
 	}
 
@@ -31,7 +32,7 @@ export default class Timer {
 	}
 
 	startTimer() {
-		// TODO: make a note a new record started
+		// TODO: make a note a new current record started
 		this.running = true
 	}
 
