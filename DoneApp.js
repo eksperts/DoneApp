@@ -35,7 +35,22 @@ export class DoneApp {
 
 	timerButtonClicked() {
 		if (this.timerIsRunning) {
-			
+			// stop timer
+			this.stopTimer()
+		} else if (this.tags.isSelected) {
+			// start timer
+			this.startTimer()
+		} else {
+			// complain
+			console.log("nope")
 		}
+	}
+
+	stopTimer() {
+		this.timerIsRunning = false
+	}
+
+	startTimer() {
+		this.timerIsRunning = true
 	}
 }
