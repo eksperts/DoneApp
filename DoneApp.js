@@ -3,6 +3,7 @@ import DI from 'FuseJS/DI'
 import Tags from 'Model/Tags'
 import Timer from 'Model/Timer'
 import Storage from 'Model/Storage'
+import Log from 'Model/Log'
 
 import ControlCenter from 'Pages/ControlCenter'
 import ManageTags from 'Pages/ManageTags'
@@ -13,6 +14,7 @@ export default class DoneApp {
 		DI(this)
 		this.title = "Done"
 		this.storage = new Storage()
+		this.log = new Log()
 		this.tags = new Tags()
 		this.timer = new Timer()
 		this.pages = [new ControlCenter()]

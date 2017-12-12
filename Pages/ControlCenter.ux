@@ -1,11 +1,21 @@
 <DockPanel ux:Class="ControlCenter">
+	
 	<Grid Dock="Top" Columns="1*,96" Margin="16">
 		<Text ux:Name="tagLabel" Value="{tags.selectedLabel}" Dock="Left" Alignment="CenterLeft" TextWrapping="Wrap" />
 		<TagSelectButton Dock="Right" Height="40" Clicked="{tagButtonClicked}" Selected="{tags.isSelected}" />
 	</Grid>
+
 	<StackPanel Dock="Top" ItemSpacing="8">
 		<Text Value="00:00" Alignment="Center" FontSize="36" />
 		<StartTimerButton Height="64" Margin="16,0" ShowStartTimer="{tags.isSelected} && {timer.notIsRunning}" ShowStopTimer="{tags.isSelected} && {timer.isRunning}" Clicked="{timer.toggle}" />
 	</StackPanel>
-	<Panel />
+
+	<ScrollView>
+		<StackPanel Margin="16">
+			<Each Items="{log.list}">
+				<Text Value="{}" />
+			</Each>
+		</StackPanel>
+	</ScrollView>
+
 </DockPanel>

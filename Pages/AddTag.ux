@@ -1,6 +1,8 @@
 <DockPanel ux:Class="AddTag">
 	<Panel Dock="Top">
-		<TextInput Margin="16" Value="..." />
+		<Rectangle Color="#eee" StrokeWidth="1" StrokeColor="#aaa" CornerRadius="2" Margin="8">
+			<TextInput Margin="8" Value="..." />
+		</Rectangle>
 	</Panel>
 	<Panel Dock="Top">
 		<Text Value="Save" Color="#fff" Alignment="Center" />
