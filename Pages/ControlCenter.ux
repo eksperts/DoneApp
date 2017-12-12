@@ -5,7 +5,7 @@
 	</Grid>
 	<StackPanel Dock="Top" ItemSpacing="8">
 		<Text Value="00:00" Alignment="Center" FontSize="36" />
-		<StartTimerButton Height="64" Margin="16,0" ShowStartTimer="{tags.isSelected} && {timerIsRunning == false}" ShowStopTimer="{tags.isSelected} && {timerIsRunning}" Clicked="{timerButtonClicked}" />
+		<StartTimerButton Height="64" Margin="16,0" ShowStartTimer="{tags.isSelected} && {timerIsNotRunning}" ShowStopTimer="{tags.isSelected} && {timerIsRunning}" Clicked="{timerButtonClicked}" />
 	</StackPanel>
 	<Panel />
 </DockPanel>
