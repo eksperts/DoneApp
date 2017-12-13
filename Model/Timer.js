@@ -50,7 +50,7 @@ export default class Timer {
 	startTimer() {
 		// TODO: make a note a new current record started
 		this.running = true
-		this.started = moment() - 10000000
+		this.started = moment()
 		this.loop = Loop.create(() => {
 			this.setElapsed(Math.floor(moment() - this.started))
 		}, 1000, true)
