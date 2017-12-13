@@ -1,8 +1,7 @@
 import DI from 'FuseJS/DI'
 
 class Tag {
-	constructor(index, title) {
-		this.index = index
+	constructor(title) {
 		this.title = title
 	}
 }
@@ -11,19 +10,19 @@ export default class Tags {
 	constructor(storage = DI("storage")) {
 		this.storage = storage
 		// this.list = [
-		// 	new Tag(null, "Select None"),
-		// 	new Tag(1, "Test One"),
-		// 	new Tag(2, "Test Two"),
-		// 	new Tag(3, "Test Three")
+		// 	new Tag(""),
+		// 	new Tag("Test One"),
+		// 	new Tag("Test Two"),
+		// 	new Tag("Test Three")
 		// ]
-		this.list = []
+		this.list = [new Tag("")]
 		this.selected = null
 		this.readStoredTags()
 		// this.writeTags()
 	}
 
 	readStoredTags() {
-		this.list = this.storage.readTags()
+		this.list.push.apply(this.list, this.storage.readTags())
 	}
 
 	writeTags() {
@@ -35,12 +34,16 @@ export default class Tags {
 	}
 
 	get selectedLabel() {
-		return this.isSelected ? this.list[this.selected].title : "No tag selected"
+		return this.isSelected ? this.selected : "No tag selected"
 	}
 
-	select(idx) {
-		this.stopTimer()
-		this.selected = idx
+	select(tag) {
+		if (tag == "") {
+			this.clear()
+		} else {
+			this.stopTimer()
+			this.selected = tag
+		}
 	}
 
 	clear() {

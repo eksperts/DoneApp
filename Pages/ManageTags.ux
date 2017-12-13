@@ -11,7 +11,7 @@
 						<Text Value="Delete" Color="#fff" Alignment="Center" />
 						<Rectangle Color="#f81" CornerRadius="2" Margin="8,0" />
 					</Panel> -->
-					<Text Value="{title}" Alignment="CenterLeft" Margin="8,0" />
+					<Text Value="{= {title} == '' ? 'Select None' : {title} }" Alignment="CenterLeft" Margin="8,0" />
 					<Rectangle Color="#0002" Layer="Background" CornerRadius="2" />
 				</DockPanel>
 			</Each>

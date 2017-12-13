@@ -7,7 +7,7 @@ export default class ManageTags {
 	}
 
 	tagClicked(args) {
-		this.tags.select(args.data.index)
+		this.tags.select(args.data.title)
 		this.pages.pop()
 	}
 }

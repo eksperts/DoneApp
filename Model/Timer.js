@@ -5,6 +5,7 @@ export default class Timer {
 		this.tags = tags
 		this.storage = storage
 		this.running = false
+		// TODO: this here should check if there was an open timer running
 	}
 
 	get isRunning() {

@@ -28,16 +28,16 @@ export default class DoneApp {
 		this.pages.push(new AddTag())
 	}
 
+	get haveHistory() {
+		return this.pages.length > 1
+	}
+
 	onBackButton() {
-		if (this.pages.length > 0) {
+		if (this.haveHistory) {
 			this.pages.pop()
 		} else {
 			// TODO: if on Android, exit app (perhaps?)
 		}
-	}
-
-	get haveHistory() {
-		return this.pages.length > 1
 	}
 
 }
