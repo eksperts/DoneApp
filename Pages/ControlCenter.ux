@@ -13,23 +13,49 @@
 	</StackPanel>
 
 	<Panel>
+
 		<WhileEmpty Items="{log.list}">
 			<StackPanel Alignment="VerticalCenter" Margin="64,0" ItemSpacing="16">
 				<Text Value="You have done nothing" TextWrapping="Wrap" Alignment="Center" />
 				<Text Value="¯\_(ツ)_/¯" TextWrapping="Wrap" Alignment="Center" />
 			</StackPanel>
 		</WhileEmpty>
-		<ScrollView>
-			<StackPanel Margin="16">
-				<Each Items="{log.list}">
-					<DockPanel>
-						<Text Value="{duration}" Dock="Right" />
-						<Text Value="{date}" Dock="Right" Margin="24,0" />
-						<Text Value="{tag}" />
-					</DockPanel>
-				</Each>
-			</StackPanel>
-		</ScrollView>
+
+		<WhileNotEmpty Items="{log.list}">
+			<PageControl>
+				<ScrollView>
+					<StackPanel Margin="16">
+
+						<Each Items="{log.list}">
+							<DockPanel>
+								<Text Value="{duration}" Dock="Right" />
+								<Text Value="{date}" Dock="Right" Margin="24,0" />
+								<Text Value="{tag}" />
+							</DockPanel>
+						</Each>
+					</StackPanel>
+				</ScrollView>
+
+				<ScrollView>
+					<StackPanel Margin="16">
+						<Each Items="{log.groupedList}">
+							<StackPanel Margin="16" ItemSpacing="8">
+								<Text Value="{date}" Font="Bold" />
+								<Each Items="{tags}">
+									<StackPanel ItemSpacing="8">
+										<DockPanel>
+											<Text Value="{time}" Dock="Right" />
+											<Text Value="{tag}" />
+										</DockPanel>
+									</StackPanel>
+								</Each>
+							</StackPanel>
+						</Each>
+					</StackPanel>
+				</ScrollView>
+			</PageControl>
+		</WhileNotEmpty>
+
 	</Panel>
 
 </DockPanel>

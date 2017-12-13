@@ -8,14 +8,22 @@ class LogEntry {
 	}
 
 	get duration() {
-		let res = "- - : - - : - -"
-		if (this.end != null && this.start != null) res = msToTime(this.end - this.start)
+		let Helpers = DI("helpers")
+		return Helpers.msToTime(this.durationInMillis)
+	}
+
+	get durationInMillis() {
+		let res = 0
+		if (this.end != null && this.start != null && (this.end > this.start)) res = this.end - this.start
 		return res
 	}
 
 	get date() {
+		let Helpers = DI("helpers")
 		let started = new Date(this.start)
-		return started.getDate() + "." + started.getMonth() + "." + started.getFullYear()
+		return Helpers.padNumber(started.getDate())
+			+ "." + Helpers.padNumber(started.getMonth()+1)
+			+ "." + Helpers.padNumber(started.getFullYear())
 	}
 }
 
@@ -31,20 +39,25 @@ export default class Log {
 		let tmp = this.storage.readLog().map((e) => {
 			return new LogEntry(e)
 		})
-		console.log(JSON.stringify(tmp))
 		this.list.push.apply(this.list, tmp)
 	}
-}
 
-function msToTime(duration) {
-    var milliseconds = parseInt((duration%1000)/100)
-        , seconds = parseInt((duration/1000)%60)
-        , minutes = parseInt((duration/(1000*60))%60)
-        , hours = parseInt((duration/(1000*60*60))%24);
-
-    hours = (hours < 10) ? "0" + hours : hours;
-    minutes = (minutes < 10) ? "0" + minutes : minutes;
-    seconds = (seconds < 10) ? "0" + seconds : seconds;
-
-    return hours + ":" + minutes + ":" + seconds;
+	get groupedList() {
+		let Helpers = DI("helpers")
+		let tmp = {}
+		this.list.map((i) => {
+			if (tmp[i.date] == undefined) tmp[i.date] = {}
+			if (tmp[i.date][i.tag] == undefined) tmp[i.date][i.tag] = 0;
+			tmp[i.date][i.tag] += Math.floor(i.durationInMillis / 1000);
+		})
+		let arr = []
+		for (var date in tmp) {
+			let dateArr = []
+			for (var tag in tmp[date]) {
+				dateArr.push({tag: tag, time: Helpers.padNumber(Helpers.msToTime(tmp[date][tag] * 1000))})
+			}
+			arr.push({date: date, tags: dateArr})
+		}
+		return arr
+	}
 }

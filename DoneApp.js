@@ -4,6 +4,7 @@ import Tags from 'Model/Tags'
 import Timer from 'Model/Timer'
 import Storage from 'Model/Storage'
 import Log from 'Model/Log'
+import Helpers from 'Model/Helpers'
 
 import ControlCenter from 'Pages/ControlCenter'
 import ManageTags from 'Pages/ManageTags'
@@ -13,6 +14,7 @@ export default class DoneApp {
 	constructor() {
 		DI(this)
 		this.title = "Done"
+		this.helpers = new Helpers()
 		this.storage = new Storage()
 		this.log = new Log()
 		this.tags = new Tags()

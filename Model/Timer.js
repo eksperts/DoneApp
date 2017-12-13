@@ -3,10 +3,11 @@ import moment from 'Model/moment'
 import Loop from 'FuseJS/Timer'
 
 export default class Timer {
-	constructor(tags = DI("tags"), log = DI("log"), storage = DI("storage")) {
+	constructor(tags = DI("tags"), log = DI("log"), storage = DI("storage"), helpers = DI("helpers")) {
 		this.tags = tags
 		this.log = log
 		this.storage = storage
+		this.helpers = helpers
 		this.running = false
 		this.started = null
 		this.elapsed = 0
@@ -25,7 +26,7 @@ export default class Timer {
 	}
 
 	get elapsedLabel() {
-		return msToTime(this.elapsed)
+		return this.helpers.msToTime(this.elapsed)
 	}
 
 	get isRunning() {
@@ -77,17 +78,4 @@ export default class Timer {
 		this.elapsed = v
 	}
 
-}
-
-function msToTime(duration) {
-    var milliseconds = parseInt((duration%1000)/100)
-        , seconds = parseInt((duration/1000)%60)
-        , minutes = parseInt((duration/(1000*60))%60)
-        , hours = parseInt((duration/(1000*60*60))%24);
-
-    hours = (hours < 10) ? "0" + hours : hours;
-    minutes = (minutes < 10) ? "0" + minutes : minutes;
-    seconds = (seconds < 10) ? "0" + seconds : seconds;
-
-    return hours + ":" + minutes + ":" + seconds;
 }
