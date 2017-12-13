@@ -6,7 +6,7 @@
 	</Grid>
 
 	<StackPanel Dock="Top" ItemSpacing="8">
-		<Text Value="{timer.elapsed}" Alignment="Center" FontSize="36" />
+		<Text Value="{timer.elapsedLabel}" Alignment="Center" FontSize="36" />
 		<StartTimerButton Height="64" Margin="16,0" ShowStartTimer="{tags.isSelected} && {timer.notIsRunning}" ShowStopTimer="{tags.isSelected} && {timer.isRunning}" Clicked="{timer.toggle}" />
 	</StackPanel>
 
