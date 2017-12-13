@@ -9,6 +9,7 @@
 	<WhileTrue Value="{ReadProperty ShowStopTimer}">
 		<Change label.Value="Stop Timer" />
 		<Change bg.Color="#c51" />
+		<Cycle Target="bg.Opacity" Low="0.9" High="1" Frequency="0.8" />
 	</WhileTrue>
 	<Text ux:Name="label" Value="{ReadProperty Label}" Color="#fff" Alignment="Center" />
 	<Rectangle ux:Name="bg" Color="#888" CornerRadius="2" />
