@@ -10,7 +10,16 @@ export default class Timer {
 		this.started = null
 		this.elapsed = 0
 		this.loop = null
-		// TODO: this here should check if there was an open timer running
+		this.checkIfWasRunning()
+	}
+
+	checkIfWasRunning() {
+		let storedTimer = this.storage.readCurrent()
+		if (storedTimer.start != undefined) {
+			this.started = storedTimer.start
+			this.running = true
+			this.launchLoop()
+		}
 	}
 
 	get elapsedLabel() {
@@ -45,14 +54,19 @@ export default class Timer {
 			Loop.delete(this.loop)
 			this.loop = null
 		}
+		this.storage.writeCurrent(0)
 	}
 
 	startTimer() {
-		// TODO: make a note a new current record started
 		this.running = true
-		this.started = moment()
+		this.started = Date.now()
+		this.storage.writeCurrent(this.started)
+		this.launchLoop()
+	}
+
+	launchLoop() {
 		this.loop = Loop.create(() => {
-			this.setElapsed(Math.floor(moment() - this.started))
+			this.setElapsed(Math.floor(Date.now() - this.started))
 		}, 1000, true)
 	}
 

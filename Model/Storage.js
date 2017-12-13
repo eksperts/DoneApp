@@ -19,4 +19,17 @@ export default class Storage {
 	writeTags(arr) {
 		FS.writeTextToFileSync(this.paths.tags, JSON.stringify(arr))
 	}
+
+	readCurrent() {
+		if (!FS.existsSync(this.paths.current)) {
+			this.writeCurrent(0)
+		}
+		return JSON.parse(FS.readTextFromFileSync(this.paths.current))
+	}
+
+	writeCurrent(time) {
+		let obj = {}
+		if (time > 0) obj.start = time
+		FS.writeTextToFileSync(this.paths.current, JSON.stringify(obj))
+	}
 }
