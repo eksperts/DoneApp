@@ -25,7 +25,6 @@
 			<PageControl>
 				<ScrollView>
 					<StackPanel Margin="16">
-
 						<Each Items="{log.list}">
 							<DockPanel>
 								<Text Value="{duration}" Dock="Right" />
@@ -35,7 +34,6 @@
 						</Each>
 					</StackPanel>
 				</ScrollView>
-
 				<ScrollView>
 					<StackPanel Margin="16">
 						<Each Items="{log.groupedList}">
