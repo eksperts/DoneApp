@@ -1,11 +1,11 @@
 <DockPanel ux:Class="AddTag">
 	<Panel Dock="Top">
 		<Rectangle Color="#eee" StrokeWidth="1" StrokeColor="#aaa" CornerRadius="2" Margin="8">
-			<TextInput Margin="8" Value="..." />
+			<TextInput Margin="8" Value="{newTagName}" PlaceholderText="Enter tag name" PlaceholderColor="#aaa" />
 		</Rectangle>
 	</Panel>
-	<Panel Dock="Top">
-		<Text Value="Save" Color="#fff" Alignment="Center" />
+	<Panel Dock="Top" Clicked="{addTag}">
+		<Text Value="Add tag" Color="#fff" Alignment="Center" />
 		<Rectangle Width="152" Height="40" Margin="16" Color="#18f" CornerRadius="2" />
 	</Panel>
 </DockPanel>

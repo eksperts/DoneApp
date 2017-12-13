@@ -9,24 +9,19 @@ class Tag {
 export default class Tags {
 	constructor(storage = DI("storage")) {
 		this.storage = storage
-		// this.list = [
-		// 	new Tag(""),
-		// 	new Tag("Test One"),
-		// 	new Tag("Test Two"),
-		// 	new Tag("Test Three")
-		// ]
 		this.list = [new Tag("")]
 		this.selected = null
 		this.readStoredTags()
-		// this.writeTags()
 	}
 
 	readStoredTags() {
-		this.list.push.apply(this.list, this.storage.readTags())
+		let tmp = this.storage.readTags()
+		// tmp.sort()
+		this.list.push.apply(this.list, tmp)
 	}
 
 	writeTags() {
-		this.storage.writeTags(this.list)
+		this.storage.writeTags(this.list.slice(1))
 	}
 
 	get isSelected() {
@@ -34,25 +29,29 @@ export default class Tags {
 	}
 
 	get selectedLabel() {
-		return this.isSelected ? this.selected : "No tag selected"
+		return this.isSelected ? "Selected: " + this.selected : "No tag selected"
+	}
+
+	exists(tag) {
+		let found = this.list.find((t) => {
+			return t.title == tag
+		})
+		if (found != null) return true
+		return false
+	}
+
+	add(tag) {
+		this.list.push(new Tag(tag))
+		// this.list.sort()
+		this.writeTags()
 	}
 
 	select(tag) {
 		if (tag == "") {
-			this.clear()
+			this.selected = null
 		} else {
-			this.stopTimer()
 			this.selected = tag
 		}
 	}
 
-	clear() {
-		this.stopTimer()
-		this.selected = null
-	}
-
-	stopTimer() {
-		let timer = DI("timer")
-		timer.stopTimer()
-	}
 }
