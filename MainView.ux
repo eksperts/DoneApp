@@ -13,6 +13,9 @@
 				</Panel>
 			</WhileTrue>
 			<Text Value="{title}" Alignment="Center" Color="#fff" Font="Bold" FontSize="18" />
+			<Panel Width="56" Alignment="Right" HitTestMode="LocalBounds" Clicked="{onResetButton}">
+				<Text Value="Reset" Color="#fff" Alignment="Center" />
+			</Panel>
 		</Panel>
 		<BottomBarBackground Dock="Bottom" IncludesKeyboard="false" />
 

@@ -17,6 +17,7 @@ export default class Tags {
 	readStoredTags() {
 		let tmp = this.storage.readTags()
 		// tmp.sort()
+		this.list = [new Tag("")]
 		this.list.push.apply(this.list, tmp)
 	}
 

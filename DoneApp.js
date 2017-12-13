@@ -40,4 +40,13 @@ export default class DoneApp {
 		}
 	}
 
+	onResetButton() {
+		this.timer.stopTimer()
+		this.tags.select("")
+
+		this.storage.reset()
+		this.tags.readStoredTags()
+		this.log.updateLog()
+	}
+
 }

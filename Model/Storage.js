@@ -51,4 +51,10 @@ export default class Storage {
 		FS.writeTextToFileSync(this.paths.log, JSON.stringify([]))
 	}
 
+	reset() {
+		this.writeEmptyLog()
+		this.writeTags([])
+		this.writeCurrent(0)
+	}
+
 }
