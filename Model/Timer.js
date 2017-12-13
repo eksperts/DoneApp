@@ -3,8 +3,9 @@ import moment from 'Model/moment'
 import Loop from 'FuseJS/Timer'
 
 export default class Timer {
-	constructor(tags = DI("tags"), storage = DI("storage")) {
+	constructor(tags = DI("tags"), log = DI("log"), storage = DI("storage")) {
 		this.tags = tags
+		this.log = log
 		this.storage = storage
 		this.running = false
 		this.started = null
@@ -47,16 +48,16 @@ export default class Timer {
 	}
 
 	stopTimer() {
-		// TODO: log the current record as finished
-		this.storage.writeLog(this.started, Date.now(), this.tags.selected)
-		this.running = false
-		this.started = null
-		this.elapsed = 0
 		if (this.loop != null) {
 			Loop.delete(this.loop)
 			this.loop = null
+			this.storage.writeLog(this.started, Date.now(), this.tags.selected)
+			this.storage.writeCurrent(0, null)
+			this.log.updateLog()
 		}
-		this.storage.writeCurrent(0, null)
+		this.running = false
+		this.started = null
+		this.elapsed = 0
 	}
 
 	startTimer() {

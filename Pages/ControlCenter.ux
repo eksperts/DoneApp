@@ -7,15 +7,29 @@
 
 	<StackPanel Dock="Top" ItemSpacing="8">
 		<Text Value="{timer.elapsedLabel}" Alignment="Center" FontSize="36" />
-		<StartTimerButton Height="64" Margin="16,0" ShowStartTimer="{tags.isSelected} && {timer.notIsRunning}" ShowStopTimer="{tags.isSelected} && {timer.isRunning}" Clicked="{timer.toggle}" />
+		<StartTimerButton Height="64" Margin="16,0" Clicked="{timer.toggle}"
+			ShowStartTimer="{tags.isSelected} && {timer.notIsRunning}"
+			ShowStopTimer="{tags.isSelected} && {timer.isRunning}" />
 	</StackPanel>
 
-	<ScrollView>
-		<StackPanel Margin="16">
-			<Each Items="{log.list}">
-				<Text Value="{tag}" />
-			</Each>
-		</StackPanel>
-	</ScrollView>
+	<Panel>
+		<WhileEmpty Items="{log.list}">
+			<StackPanel Alignment="VerticalCenter" Margin="64,0" ItemSpacing="16">
+				<Text Value="You have done nothing" TextWrapping="Wrap" Alignment="Center" />
+				<Text Value="¯\_(ツ)_/¯" TextWrapping="Wrap" Alignment="Center" />
+			</StackPanel>
+		</WhileEmpty>
+		<ScrollView>
+			<StackPanel Margin="16">
+				<Each Items="{log.list}">
+					<DockPanel>
+						<Text Value="{duration}" Dock="Right" />
+						<Text Value="{date}" Dock="Right" Margin="24,0" />
+						<Text Value="{tag}" />
+					</DockPanel>
+				</Each>
+			</StackPanel>
+		</ScrollView>
+	</Panel>
 
 </DockPanel>
