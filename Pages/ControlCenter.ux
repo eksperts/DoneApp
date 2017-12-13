@@ -13,7 +13,7 @@
 	<ScrollView>
 		<StackPanel Margin="16">
 			<Each Items="{log.list}">
-				<Text Value="{}" />
+				<Text Value="{tag}" />
 			</Each>
 		</StackPanel>
 	</ScrollView>

@@ -15,7 +15,8 @@ export default class Timer {
 
 	checkIfWasRunning() {
 		let storedTimer = this.storage.readCurrent()
-		if (storedTimer.start != undefined) {
+		if (storedTimer.start != undefined && storedTimer.tag != undefined) {
+			this.tags.select(storedTimer.tag)
 			this.started = storedTimer.start
 			this.running = true
 			this.launchLoop()
@@ -47,6 +48,7 @@ export default class Timer {
 
 	stopTimer() {
 		// TODO: log the current record as finished
+		this.storage.writeLog(this.started, Date.now(), this.tags.selected)
 		this.running = false
 		this.started = null
 		this.elapsed = 0
@@ -54,13 +56,13 @@ export default class Timer {
 			Loop.delete(this.loop)
 			this.loop = null
 		}
-		this.storage.writeCurrent(0)
+		this.storage.writeCurrent(0, null)
 	}
 
 	startTimer() {
 		this.running = true
 		this.started = Date.now()
-		this.storage.writeCurrent(this.started)
+		this.storage.writeCurrent(this.started, this.tags.selected)
 		this.launchLoop()
 	}
 

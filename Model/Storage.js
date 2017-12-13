@@ -27,9 +27,28 @@ export default class Storage {
 		return JSON.parse(FS.readTextFromFileSync(this.paths.current))
 	}
 
-	writeCurrent(time) {
+	writeCurrent(time, tag) {
 		let obj = {}
 		if (time > 0) obj.start = time
+		if (tag != null) obj.tag = tag
 		FS.writeTextToFileSync(this.paths.current, JSON.stringify(obj))
 	}
+
+	readLog() {
+		if (!FS.existsSync(this.paths.log)) {
+			this.writeEmptyLog()
+		}
+		return JSON.parse(FS.readTextFromFileSync(this.paths.log))
+	}
+
+	writeLog(start, end, tag) {
+		let arr = this.readLog()
+		arr.unshift({start: start, end: end, tag: tag})
+		FS.writeTextToFileSync(this.paths.log, JSON.stringify(arr))
+	}
+
+	writeEmptyLog() {
+		FS.writeTextToFileSync(this.paths.log, JSON.stringify([]))
+	}
+
 }
